@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>center</title>
+    <link href="./lib/bootstrap/css/bootstrap.css"" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index/index.css">
+    <link rel="stylesheet" href="./css/center/center.css">
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="./lib/html5shiv/html5shiv.min.js"></script>
+        <script src="./lib/respond/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- 导航 -->
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only"> </span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand glyphicon glyphicon-asterisk" href="./index.html"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="./index.html" class="tu">首页</a></li>
+                        <li><a href="./web.html" class="tu">web</a></li>
+                        <li><a href="./java.html" class="tu">Java</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="./center.html" class="tu">个人中心</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 背景图 -->
+    <div class="top_img screen"></div>
+
+    <!-- 个人介绍 -->
+    <div class="container">
+        <center>
+            <img src="./images/center/me.jpg" alt="" class="img-circle me" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/me.jpg')">
+            <span class="glyphicon glyphicon-music pull-right musicbtn" onclick="autoplay();"></span>
+            <audio id="bgMusic" src="./music/Do_not_talk.m4a" autoplay preload loop="loop"></audio>
+        </center>
+        <div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" class="tu">个人介绍</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" class="tu">景色展览</a></li>
+            </ul>
+            <div class="tab-content Exhibition">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <p class="brief tu">
+                        <span>公司：</span>
+                        <span>中科智能</span>
+                    </p>
+                    <p class="brief tu">
+                        <span>职位：</span>
+                        <span>web前端</span>
+                    </p>
+                    <p class="brief tu">
+                        <span>技能：</span>
+                        <span>HTML、CSS、JS</span>
+                    </p>
+                    <h5 class="tu text-center">—— 感悟 ——</h5>
+                    <p class="Sentiment tu">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;天空在哭泣，山川在暴怒，大地在残忍地冷笑，灾难，这不可抵挡的利箭，直插进我们的心里。这些天，我已经看惯了挣扎在生死线上的人与死神的残酷较量，
+                        不禁感叹生命的无常与脆弱，但又无时无刻不被顽强不息的生命所折服。不！更确切地说，是震撼！5.12的阴云尚未散去，仍然笼罩着中华大地，笼罩着每个人的心。
+                        可是，十三亿炎黄子孙从没惧怕过，在这次事件中，我感悟出了生命的真谛。<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在地震中，一位被压在砸下来的石块下的伤者，被困180小时之后获救，在这期间，他靠喝自已的尿液来补充水分。在瓦砾里面断水断粮，与外界失去联系，
+                        还不能入睡，因为一旦睡着了，就再也不会醒来了。他在与死神打仗,疲劳战，比的是意志，他赢了，他获救了，是强大的生存信念支撑着他，意志力是他的矛，
+                        坚定的信念是他的盾，他靠着它们，驱赶了死神。<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;古今中外，是一个绿茵草原，绽放着无数凄切而壮美的生命之花。一个以“有生命就希望”为名言的世界顶尖科学家------霍金，
+                        因患严重的肌肉萎缩症而只能通过电脑系统和语言合成器表达自己的思想。但他凭着一个清醒的大脑和仅能活动的三根手指，创造了一个又一个震惊世界的科研成果。
+                        但是，他虽然拥有了很多四肢健全的人所没有的东西，可他在掌声、鲜花背后，所受的煎熬，有谁体会得到？病魔摧残他的身体，但推不垮他的意志，是心底那个信念支撑着他，
+                        永不倒下。霍金曾说过这样的一句让我感触良多的话：“无论命运有多坏，人总应所作为，有生命就有希望。”听来像老生常谈，然而这却发自霍金的内心深处，就是最有说服力的勉励，
+                        霍金的行动已证明一切。<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;另一朵花瓣上刻写着“顽强”，的生命之花------张海迪，五大著名残疾人、二十位最具影响力的女性之一。五岁时，张海迪因患脊髓血管瘤，高度截肢，下半辈子只能坐在轮椅上度过，
+                        要是我，我早觉得天都塌下来了，都不想活了。但她没有，她默默地承受了这一切，接受了命运的不公平。张海迪没有进过学校的大门，但她以不屈的精神与命运抗争，奋发自学，
+                        以顽强的毅力，先后自学完成小学、中学、大学课程。她甚至以坚定的意志力，去攻读哲学专业研究生课程。她在与命运抗争！她在用实际行动来告诉人们：“我可以！”。
+                        经过不懈努力，终于奠定了她在世界上的地位------她通过了论文答辩，被授予哲学博士学位。张海迪的事迹又一次告诉我们：从容面对命运的不公，
+                        有着自已的信念和草根般的顽强生命力，一切都会好起来。张海迪以自身的勇气证实着生命的力量。<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贝多芬、爱迪生及中国最近的残运会游泳运动员李汉华，项项铁证都说明了生命因坚持而可敬，因顽强而变得五彩斑澜。身体残疾的人能做到的事令我们这些四肢健全的人感到汗颜。
+                        残疾人能做到的事，我们就不能做到？坚持心中的信念，每个人都能做到。生命的真谛，莫过于此。感悟生命，让生命之花开得轰轰烈烈！<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当一个人为了讨好大众而选择沉默盲从的时候，就是走向平庸的开始。当一个人在世俗的眼里中选择放弃坚持自我的时候，就是碌碌无为的开端。
+                        反观现在的人，不仅不敢坚持自己的想法，反而还会害怕自己和大众产生分歧。
+                        长此以往，往大了说，他们会逐渐失去改变世界的机会。往小了说，他们会慢慢失去赢得成功的机会。
+                        成功者，首先就应该丢掉那颗百般顺从的心。要不然，自己磨光了棱角后就只能泯人众人。
+                    </p>
+                </div>
+                <div role="tabpanel" class="tab-pane scenery" id="settings">
+                    <img src="./images/center/s_1.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_1.jpg')">
+                    <img src="./images/center/s_2.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_2.jpg')">
+                    <img src="./images/center/s_3.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_3.jpg')">
+                    <img src="./images/center/s_4.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_4.jpg')">
+                    <img src="./images/center/s_5.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_5.jpg')">
+                    <img src="./images/center/s_6.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_6.jpg')">
+                    <img src="./images/center/s_7.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_7.jpg')">
+                    <img src="./images/center/s_8.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_8.jpg')">
+                    <img src="./images/center/s_9.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_9.jpg')">
+                    <img src="./images/center/s_10.jpg" alt="" data-toggle="modal" data-target="#myModal" onclick="showimg('./images/center/s_10.jpg')">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹层Modal -->
+    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body showimg">
+                    <img src="" alt="" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="container bgc">
+        <span>友情链接：</span>
+        <a href="https://www.baidu.com" target="_blank">百度一下</a>
+    </div>
+</body>
+<script>
+    // 弹框显示图片
+    function showimg(img){
+        $('.showimg img').attr("src",img);
+    }
+    
+    // 播放音乐
+    function autoplay(){
+        var myAuto = document.getElementById('bgMusic');
+        myAuto.volume = 0.2;
+        if(myAuto.paused){
+            myAuto.play();
+        }else{
+            myAuto.pause();
+        }
+    }
+ 
+</script>
+</html>
