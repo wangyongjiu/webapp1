@@ -312,12 +312,64 @@
             </ul>
         </div>
         <div class="well">
-            
+            <h4><b>3.8 文件权限:chmod命令</b></h4>
+            <ul>
+                <li><b>chmod(change mode)功能：</b>变更文件或目录的权限</li>
+                <li>
+                    <b>语法: chmod [参数] [<权限范围><符号><权限代号>]</b><br/>
+                    -R 或 --recursive 递归处理：将指定目录下的所有文件及子目录一并处理。<br/>
+                    <ul>
+                        <li>
+                            权限范围的表示法如下：<br/>
+                            u: User 即文件或目录的拥有者<br/>
+                            g: Group 即文件或目录的所属群组<br/>
+                            o: Other 除了文件或目录拥有者或所属群组之外，其他用户皆属于这个范围<br/>
+                            a: All 即全部的用户，包含拥有者，所属群组以及其他用户<br/>
+                        </li>
+                        <li>
+                            符号：<br/>
+                            +: 添加权限<br/>
+                            -: 取消权限<br/>
+                        </li>
+                        <li>
+                            有关权限代号的部分，列表于下：<br/>
+                            r: 读取权限，数字代号为”4“<br/>
+                            w: 写入权限，数字代号为”2“<br/>
+                            x: 执行或切换权限，数字代号为”1“<br/>
+                            -: 不具任何权限，数字代号为”0“<br/>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>linux权限格式：<类型><用户><组><其他用户></b><br/>
+                    <img src="../../images/index/linux/3.png" alt="" class="img-responsive"><br/>
+                    <ul>
+                        <li>第1位：文件类型(d目录，-普通文件，I 链接文件)</li>
+                        <li>第2-4位：所属用户权限，用u(user)表示</li>
+                        <li>第5-7位：所属组权限，用g(group)表示</li>
+                        <li>第8-10位：其他用户权限，用o(other)表示</li>
+                        <li>第2-10位：表示所有权限，用a(all)表示</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-
-
-
-
+        <div class="well">
+            <h4><b>查看网卡配置 cat/etc/sysconfig/nrework-scripts/ifcfg-eth0</b><br><b>概要信息如下：</b></h4>
+            <img src="../../images/index/linux/4.png" alt="" class="img-responsive"><br/>
+        </div>
+        <div class="well">
+            <h4><b>setup设置</b></h4>
+            <h5><b>setup</b></h5>
+        </div>
+        <div>
+            <img src="../../images/index/linux/4.png" alt="" class="img-responsive"><br/>
+            <img src="../../images/index/linux/5.png" alt="" class="img-responsive"><br/>
+            <img src="../../images/index/linux/6.png" alt="" class="img-responsive"><br/>
+            <img src="../../images/index/linux/7.png" alt="" class="img-responsive"><br/>
+            <p><b>3）选择第一块网卡</b></p>
+            <img src="../../images/index/linux/8.png" alt="" class="img-responsive"><br/>
+            <img src="../../images/index/linux/9.png" alt="" class="img-responsive"><br/>
+        </div>
 
 
 
