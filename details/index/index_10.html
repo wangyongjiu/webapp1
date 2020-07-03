@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Linux系统学习</title>
+    <link href="../../lib/bootstrap/css/bootstrap.css"" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/index/index.css">
+    <!--[if lt IE 9]>
+        <script src="../lib/html5shiv/html5shiv.min.js"></script>
+        <script src="../lib/respond/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background-image: url('../../images/bg.gif');">
+    <div class="container">
+        <h3>Linux系统学习（以CentOS为例）</h3>
+        <div class="well">
+            <h4><b>1.1Unix介绍</b></h4>
+            Unix是一个强大的多用户、多任务操作。于1969年在AT&T（美国电话电报公司）的贝尔实验室开发。
+        </div>
+        <div class="well">
+            <h4><b>1.2Linux介绍</b></h4>
+            Linux是一套免费的类Unix操作系统<br/>
+            Linux是一套免费使用和自由传播的类Unix操作系统，可以任意修改其源代码。<br/>
+            Linux存在着许多不同的Linux版本，但他们都使用了Linux内核。例如:redhat、CentOS、红旗、SuSe、ubuntu<br/>
+        </div>
+        <div class="well">
+            <h4><b>1.3Linux目录结构</b></h4>
+            <img src="../../images/index/linux/1.png" alt="" class="img-responsive"><br/>
+            <ul>
+                <li><b>/</b>: 根目录，一般根目录下只存放目录，不要存放文件。/etc、/bin、/dev、/lib、/sbin应该和根目录放置在一个分区中</li>
+                <li><b>/bin</b>: /usr/bin:(binaries) 存放二进制可执行文件。如常用的命令ls、tar、ma、cat等</li>
+                <li><b>/boot</b>: 放置Linux系统启动时用到的一些文件/boot/vmlinuz为Linux的内核文件，以及/boot/gurb。建议单独分区，分区大小100M即可</li>
+                <li><b>/dev</b>: (devices)存放Linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备。常用的是挂载光驱mount/dev/cdrom/mnt</li>
+                <li>
+                    <b>/etc</b>: (etcetera) 系统配置文件存放的目录，不建议在次目录下存放可执行文件。
+                    重要的配置文件有/etc/inittab、/etc/fstab、/etc/init.d、/etc/X11、/etc/sysconfig、/etc/xinetd.d 修改配置文件之前己得备份。注意：/etc/X11存放与
+                    X windows有关的设置。
+                </li>
+                <li>
+                    <b>/home</b>: 系统默认的用户家目录，新增用户账户时，用户的家目录都存放在此目录下，''表示当前用户的家目录，
+                    ''test表示用户test的家目录。建议单独分区，并设置较大的磁盘空间，方便用户存放数据
+                </li>
+                <li><b>/lib</b>: (library) /usr/lib: /usr/local/lib: 系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为/lib/modules</li>
+                <li><b>/root</b>: 系统管理员root的家目录，系统第一个启动的分区为/，座椅最好将/root和/放置在一个分区下</li>
+                <li>
+                    <b>/sbin</b>: (super user binaries) /usr/sbin: /user/local/sbin: 放置系统管理员使用的可执行命令。如fdisk、shutdown、mount等。与/bin不同的是，这几个目录是给
+                    系统管理员root使用的命令。一般用户只能“查看”而不能设置和使用。
+                </li>
+                <li>
+                    <b>/usr</b>: (unix shared resources) 应用程序存放目录，/usr/bin 存放应用程序，/usr/share 存放共享数据，/usr/lib 存放不能直接运行的，
+                    却是许多程序运行所必须的一些函数库文件。/usr/local：存放软件升级包。/usr/share/doc：系统说明文件存放目录。/usr/share/man：程序说明
+                    存放目录，使用man ls 时会查询/usr/share/man/man1/ls.1.gz 的内容建议单独分区，设置较大的磁盘空间
+                </li>
+                <li>
+                    <b>/var</b>: (variable) 放置系统执行过程中经常变化的文件，如随时更改的日志文件 /var/log，/var/log/message: 所有的登录文件存放目录，
+                    /var/spool/mail：邮件存放的目录，/var/run: 程序或服务启动
+                </li>
+                <li><b>/opt</b>: 给主机额外安装软件所拜访的目录。以前的Linux系统中，习惯放置在/usr/local 目录下</li>
+                <li><b>/tmp</b>: (temporary) 一般用户或正在执行的程序临时存放文件的目录，任何人都可以访问，重要数据不可放置在此目录下</li>
+                <li><b>/srv：</b>服务启动之后需要访问的数据目录，如www服务需要访问的网页数据存放在/srv/www/内</li>
+                <li><b>/mnt:/media:</b> (mount) 光盘默认挂载点，通常光盘挂在于/mnt/cdrom下，也不一定，可以选择任意位置进行挂载</li>
+                <li>
+                    <b>/proc:</b> 此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的目录有/proc/cpuinfo、
+                    /proc/interrupts、/proc/dma、/proc/ioports、/proc/net/*等
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h4><b>3.1 磁盘管理</b></h4>
+            <h5><b>3.1.1 ls命令</b></h5><br/>
+            <ul>
+                <li><b>ls（list）功能：</b>列出目录内容</li>
+                <li>
+                    <b>格式：ls[参数][文件或目录]</b><br/>
+                    -a或-all 下所有文件和目录。注意隐藏文件、特殊目录、. 和 ..<br/>
+                    -l 使用详细格式列表<br/>
+                    -t 用文件和目录的更改时间排序<br/>
+                    -r 反向排序<br/>
+                    --help 在线帮助<br/>
+                </li>
+                <li>
+                    <b>常用</b><br/>
+                    ls -l 简化版ll<br/>
+                    ls -al<br/>
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.1.2 cd命令</b></h5>
+            <ul>
+                <li><b>cd(change directory)功能：</b>切换目录</li>
+                <li>
+                    <b>语法：cd[目录]</b><br/>
+                    cd ~ : 当前用户目录<br/>
+                    cd / : 根目录<br/>
+                    cd - : 上一次访问的目录<br/>
+                    cd .. : 上一级目录<br/>
+                    cd    : 缺省当前用户目录<br/>
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.1.3 pwd命令</b></h5>
+            <ul>
+                <li><b>pwd(print working directory)功能：</b>显示工作目录</li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.1.4 mkdir命令</b></h5>
+            <ul>
+                <li><b>mkdir(make directory)功能：</b>创建目录</li>
+                <li>
+                    -p 父目录不存在情况下先生成父目录（parents）<br/>
+                    -v 显示命令执行过程中的详细信息<br/>
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.2.1 cat命令</b></h5>
+            <ul>
+                <li><b>cat(catenate)功能: </b>显示文本文件内容</li>
+                <li>
+                    <b>语法：</b><br/>
+                    cat文件：显示指定文件的左右内容
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.2.2 more命令</b></h5>
+            <ul>
+                <li><b>more功能：</b>分页显示我呢见北荣，还支持直接跳转行等功能</li>
+                <li><b>语法：</b>more file</li>
+                <li>
+                    <b>操作：</b>Enter 向下n行，需要定义。默认为1行<br/>
+                        空格键 向下关东一屏 或 Ctrl + F<br/>
+                        B 返回上一屏 或 Ctrl + B<br/>
+                        q 退出 more<br/>
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.2.3 less命令</b></h5>
+            <ul>
+                <li><b>less功能：</b>分页显示文件内容，操作更详细</li>
+                <li>
+                    <b>语法：less[参数] 文件</b><br/>
+                    -m 显示类似more命令的百分比<br/>
+                    -N 显示每行的行号<br/>
+                </li>
+                <li>
+                    <b>操作</b><br/>
+                    空格键：前进一页 或 page down<br/>
+                    b: 后退一页 或 page up<br/>
+                    d: 前进半页<br/>
+                    u: 后退半页<br/>
+                    回车键：前进一步 或 方向键现向下<br/>
+                    y: 后退一行 或 方向键向上<br/>
+                    /字符串：向下搜索<br/>
+                    ?字符串：向上搜索<br/>
+                    v：进入vim编辑器<br/>
+                    左右方向键：相当于水平滚动条<br/>
+                    q: 退出
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.2.4 tail命令</b></h5>
+            <ul>
+                <li><b>功能：</b>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。</li>
+                <li>
+                    <b>格式：</b>tail [必要参数] [选择参数] [文件]<br/>
+                    -n<行数> 显示行数<br/>
+                    -f 循环读取
+                </li>
+                <li>& 表示后台运行，否则占用终端</li>
+                <li>ctrl + c 退出</li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.3.1 cp命令</b></h5>
+            <ul>
+                <li><b>cp(copy)功能：</b>复制文件或目录</li>
+                <li>
+                    <b>语法: cp[参数] [源文件或目录] [目录文件或目录]</b><br/>
+                    -r 或 --recursive 递归处理，将指定目录下的文件与字目录一并处理
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.3.2 mv命令</b></h5>
+            <ul>
+                <li><b>mv(move)功能：</b>移动或更名现有的文件或目录</li>
+                <li>
+                    <b>语法：mv [源文件或目录] [目标文件或目录]</b><br/>
+                    -f 或 --force 若目标文件或目录与现有的文件或目录重复，则直接覆盖现有的文件或目录。
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.3.3 rm 命令</b></h5>
+            <ul>
+                <li><b>rm(remove)功能：</b>删除文件或目录</li>
+                <li>
+                    <b>语法：rm [-dfirv] [--help] [--version] [文件或目录]</b><br/>
+                    -f 或 --force 强制删除或目录<br/>
+                    -r 或 -R 或 --recursive 递归处理，将指定目录下的所有文件及子目录一并处理
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.3.4 find命令</b></h5>
+            <ul>
+                <li><b>find功能： 查找文件或目录</b></li>
+                <li>
+                    <b>语法：find [目录...] [参数]</b><br/>
+                    -name 指定字符串作为寻找文件或目录的范本样式
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h4><b>3.4文档编辑</b></h4>
+            <h5><b>vi 或 vim 命令</b></h5>
+            <ul>
+                <li>输入“vim文件名“进入”一般模式“</li>
+                <li>按下”i“从一般模式，进入”插入模式“</li>
+                <li>按下”esc“从”铲土模式“退出到”一般模式“</li>
+                <li>在”一般模式“下，输入”:wq“，退出编辑</li>
+            </ul>
+        </div>
+        <div class="well">
+            <img src="../../images/index/linux/2.png" alt="" class="img-responsive"><br/>
+        </div>
+        <div class="alert alert-danger">
+            注意：vim的学习这里就不多阐述了，详解请看首页 <a href="https://wangyongjiu.github.io/webapp/details/index/index_9.html">（9）vim编辑器的学习</a>
+        </div>
+        <div class="well">
+            <h5><b>3.4,2 管道 | </b></h5>
+            <ul>
+                <li>linux提供管道符号”|“。作用是”命令1“的输出内容，将作为”命令2“的输入内容。一般与grep命令一起使用。</li>
+                <li><b>格式：</b>命令1 | 命令2</li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.4.3 grep 命令 (grep全称是Global Regular Expression Print)，表示全局正则表达式版本</b></h5>
+            <ul>
+                <li><b>功能：</b>用于过滤/搜索的特定字符。可使用正则表达式能多种命令配合使用，使用上十分灵活，</li>
+                <li>
+                    <b>格式： grep [option] pattern [file]</b><br/>
+                    -i 或 --ignore-case #忽略字符大小写的差别。
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>ps命令</b></h5>
+            <ul>
+                <li><b>功能：</b>ps命令是Process Status的缩写.提供对进程的一次性查看。及执行ps命令的那个时刻进程信息</li>
+                <li>
+                    <b>格式：ps[参数]</b><br/>
+                    -e 此参数的效果和指定”A“参数相同，显示所有程序<br/>
+                    -f 显示UID，PPIP，C与STIME栏位
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.5.2 kill命令</b></h5>
+            <ul>
+                <li>kill功能：删除执行中的程序或工作</li>
+                <li>
+                    <b>语法：kill [参数] [程序]</b><br/>
+                    -l<信息编号> 若不加<信息编号>选项，则-l参数会列出全部的信息名称<br/>
+                    kill -9 表示强制终止 <br/>
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.5.3 ifconfig命令</b></h5>
+            <ul>
+                <li>功能：显示网络设备</li>
+                <li>命令：ifconfig</li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.5.4 ping命令</b></h5>
+            <ul>
+                <li>功能：测试与目标主机的连通性</li>
+                <li>命令：ping 主机名或ip地址</li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>3.6 备份压缩: tar命令</b></h5>
+            <ul>
+                <li><b>tar功能：</b>文件备份压缩</li>
+                <li>
+                    <b>语法：tar命令</b><br/>
+                    -c 建立一个压缩文件的参数指令(create) --压缩<br/>
+                    -x 解开一个压缩文件的参数(extract) --解压<br/>
+                    -z 是否需要用gzip压缩<br/>
+                    -v 压缩的过程中显示文件(verbose)<br/>
+                    -f 使用档名，在f之后要立即接档名(file)<br/>
+                    常用解压参数组合：zxvf<br/>
+                    常用压缩参数组合：zcvf<br/>
+                </li>
+            </ul>
+        </div>
+        <div class="well">
+            <h5><b>关机重启</b></h5>
+            <ul>
+                <li>Linux centos重启命令：reboot</li>
+                <li>Linux centos关机命令：halt 立即关机</li>
+            </ul>
+        </div>
+        <div class="well">
+            
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div>
+            <img src="../../images/index/vim/4.png" alt="" class="img-responsive"><br/>
+        </div> -->
+        <h4>未完待续~~~</h4>
+    </div>
+</body>
+</html>
