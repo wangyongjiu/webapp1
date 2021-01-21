@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Linux系统下搭建Python3环境</title>
+    <link href="../../lib/bootstrap/css/bootstrap.css"" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/index/index.css">
+    <!--[if lt IE 9]>
+        <script src="../lib/html5shiv/html5shiv.min.js"></script>
+        <script src="../lib/respond/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background-image: url('../../images/bg.gif');">
+    <div class="container">
+        <h3>Linux系统下搭建Python3环境(以CentOS6.7为例)</h3>
+        <div class="well">
+            开始安装之前先看一下机器的环境，主要看一下操作系他的环境和python版本。<br>
+            查看环境<br>
+            操作系统:
+        </div>
+        <div class="well">
+            [root@reportweb]#  cat /etc/redhat-release<br>
+            CentOS release 6.7 (Final)<br>
+            查看python版本：
+        </div>
+        <div class="well">
+            [root@reportweb]# python -V<br>
+            Python 2.6.6
+        </div>
+        <div class="well">
+            [root@reportweb]# python3 -V<br>
+            -bash: python3: command not found<br>
+            可以看到操作系统是CentOS 6.5 ，python此时只有一个python2，没有python 3 。
+        </div>
+        <h4><b>1.下面开始进入正式安装Python环境：</b></h4>
+        <div class="well">
+            第1步：下载python安装包，准备编译环境：<br>
+            [root@reportweb]# yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make
+        </div>
+        <div class="well">
+            第2步：下载python源码<br>
+            [root@reportweb src]# wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz
+        </div>
+        <div class="well">
+            第3步：解压<br>
+            [root@reportweb src]# tar -zxvf Python-3.6.6.tgz
+        </div>
+        <div class="well">
+            第4步：安装，编译<br>
+            [root@reportweb src]# cd Python-3.6.2<br>
+            [root@reportweb Python-3.6.2] # mkdir /usr/local/python3.6<br>
+            [root@reportweb Python-3.6.2] # ./configure --prefix=/usr/local/python3.6<br>
+            [root@reportweb Python-3.6.2] # make<br>
+            [root@reportweb Python-3.6.2] # make install
+        </div>
+        <div class="well">
+            第5步：建立软链<br>
+            [root@reportweb Python-3.6.2] # ln -s /usr/local/python3.6/bin/python3.6  /usr/bin/python3
+        </div>
+        <div class="well">
+            第6步：查询python版本<br>
+            [root@reportweb]# python3 -V<br>
+            Python 3.6.6<br>
+            [root@reportweb]# python -V<br>
+            Python 2.6.6<br>
+            至此，python3安装完毕。
+        </div>
+        <h4><b>2.安装pip3,下面开始安装pip3的步骤。</b></h4>
+        <div class="well">
+            第1步：安装setuptools<br>
+            [root@reportweb src]# wget --no-check-certificate  https://pypi.python.org/packages/source/s/setuptools/setuptools-19.6.tar.gz#md5=c607dd118eae682c44ed146367a17e26
+        </div>
+        <div class="well">
+            第2步：解压<br>
+            [root@reportweb src]# tar -zxvf setuptools-19.6.tar.gz
+        </div>
+        <div class="well">
+            第3步：编译,安装<br>
+            [root@reportweb src] # cd setuptools-19.6/<br>
+            [root@reportweb setuptools-19.6] # python3 setup.py build<br>
+            [root@reportweb setuptools-19.6] # python3 setup.py install
+        </div>
+        <div class="well">
+            第4步：建立软链<br>
+            [root@reportweb setuptools-19.6] #  ln -s /usr/local/python3.6/bin/pip3 /usr/bin/pip3
+        </div>
+        <div class="well">
+            第5步：查看pip3版本<br>
+            [root@reportweb] # pip3 -V<nr>
+            pip 8.0.2 from /usr/local/python3.6/lib/python3.6/site-packages/pip-8.0.2-py3.6.egg (python 3.6)
+        </div>
+        <div class="well">
+            第6步：更新<br>
+            [root@reportweb] # pip3 install --upgrade pip<br>
+            Collecting pip<br>
+              Downloading https://files.pythonhosted.org/packages/00/b6/9cfa56b4081ad13874b0c6f96af8ce16cfbc1cb06bedf8e9164ce5551ec1/pip-19.3.1-py2.py3-none-any.whl (1.4MB)<br>
+                100% |████████████████████████████████| 1.4MB 172kB/s <br>
+            Installing collected packages: pip<br>
+              Found existing installation: pip 8.0.2<br>
+                Uninstalling pip-8.0.2:<br>
+                  Successfully uninstalled pip-8.0.2<br>
+            Successfully installed pip-19.3.1<br>
+            [root@reportweb]# pip3 -V<br>
+            pip 19.3.1 from /usr/local/python3.6/lib/python3.6/site-packages/pip (python 3.6)<br>
+            至此，pip3安装完毕。
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <h4>转载链接：https://www.cnblogs.com/huanghanyu/p/12921842.html</h4>
+        <h4>2021年1月20日写<br>~~~未完待续~~~</h4>
+    </div>
+</body>
+</html>
