@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>阿里云ECS服务器centos8搭建java环境</title>
+    <link href="../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/index/index.css">
+    <!--[if lt IE 9]>
+        <script src="../lib/html5shiv/html5shiv.min.js"></script>
+        <script src="../lib/respond/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background-image: url('../../images/bg.gif');">
+    <div class="container">
+        <h3>阿里云服务器搭建JAVA环境详解</h3>
+        <h4>二、linux下安装jdk配置环境</h4>
+        <div class="well">
+            首先说一下linux下的几个比较重要的文件：
+            <br>
+            /etc/profile：
+            <br>
+            该文件登录操作系统时，为每个用户设置环境信息，当用户第一次登录时,该文件被执行。也就是说这个文件对每个shell都有效，用于获取系统的环境信息，如果你的计算机仅仅作为开发使用时推荐使用这种方法，因为所有用户的shell都有权使用这些环境变量，可能会给系统带来安全性问题。 这里是针对所有的用户的,所有的shell。
+            <br>
+            /etc/bashrc：
+            <br>
+            为每一个运行bash shell的用户执行此文件，当bash shell被打开时,该文件被读取。也就是说，当用户shell执行了bash时，运行这个文件。
+            <br>
+            ~/.bashrc：
+            <br>
+            该文件存储的是专属于个人bash shell的信息，当登录时以及每次打开一个新的shell时,执行这个文件。在这个文件里可以自定义用户专属的个人信息，它可以把使用这些环境变量的权限控制到用户级别,这里是针对某一个特定的用户，如果你需要给某个用户权限使用这些环境变量，你只需要修改其个人用户主目录下的.bashrc文件就可以了。
+            <br>
+            为了安全考虑：建议在~/.bashrc下配置变量
+        </div>
+        <h4>1、先下载jdk，地址如下：</h4>
+        <div>http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</div>
+        <div class="well">
+            <img src="../../images/index/15/1.webp" alt="" class="img-responsive">
+        </div>
+        <div class="well">
+            因为阿里云服务器事先就安装好了ssh，我们可以直接xftp连上去，在根目录下新建一个software（这个随意，看你想装哪里，我一般会想将这些软件都装一个文件看起整齐，方便管理的样子。纯个人习惯），将下载好的tar.gz上传到/software/目录，如图9图10
+            <br>
+            在xshell用命令 tar  -zxvf   jdk-8u181-linux-x64.tar.gz 解压安装，如图11
+        </div>
+        <div class="well">
+            <img src="../../images/index/15/2.webp" alt="" class="img-responsive">
+            <img src="../../images/index/15/3.webp" alt="" class="img-responsive">
+        </div>
+        <div class="well">
+            ps：如果文件尾部不是tar.gz，而是tar.xz。那么不是tar文件需要去掉解压命令中的z，解压命令为：
+            <br>
+             tar  -xvf   jdk-8u181-linux-x64.tar.gz 
+            <br>
+            解压之后便可删除之前传输进来的压缩包，如图12：
+            <br>
+            删除文件　　rm -f jdk-8u181-linux-x64.tar.gz
+        </div>
+        <div class="well">
+            <img src="../../images/index/15/4.webp" alt="" class="img-responsive">
+        </div>
+        <h4>2、配置环境</h4>
+        <div class="well">
+            与Windows中配置JDK类似需要配置一下三个环境变量，上面也说过了为了安全考虑，我们就在~/.bashrc下配置变量
+            <br>
+            第一步: vi ~/.bashrc
+            <br>
+            加入下面变量（注意“=”两边没有空格）
+            <br>
+            export JAVA_HOME=/software/jdk1.8.0_181
+            <br>
+            export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+            <br>
+            export PATH=$JAVA_HOME/bin:$PATH
+        </div>
+        <div class="well">
+            <img src="../../images/index/15/5.webp" alt="" class="img-responsive">
+        </div>
+        <div class="well">
+            第二步：source ~/.bashrc 
+            <br>
+            使环境变量生效 
+            <br>
+            第三步:检查
+            <br>
+            输入命令查看环境变量：
+            <br>
+            echo $CLASSPATH
+            <br>
+            echo $PATH
+            <br>
+            输入命令查看jdk的版本
+            <br>
+             java -version
+        </div>
+        <div class="well">
+            <img src="../../images/index/15/6.webp" alt="" class="img-responsive">
+        </div>
+        <div class="well">
+            ps：有时候需要重启才可以看到这些配置信息。
+        </div>
+
+      
+        
+        <h4>2021年1月22日写<br>~~~未完待续~~~</h4>
+    </div>
+</body>
+</html>
